@@ -1,0 +1,18 @@
+torch==2.1.0+cpu
+torchvision==0.16.0+cpu
+torchaudio==2.1.0+cpu
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+librosa==0.10.0.post2
+numpy==1.26.4
+soundfile==0.12.1
+scipy==1.10.1
+
+matplotlib==3.7.2
+pillow==10.0.1
+
+fastapi==0.110.0
+uvicorn==0.30.0
+python-multipart==0.0.9
+
+streamlit==1.32.0
