@@ -1,0 +1,29 @@
+# Use Python 3.10 (CPU only)
+FROM python:3.10-slim
+
+# Avoid .pyc and make logs appear immediately
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+# Work directory inside the container
+WORKDIR /app
+
+# System packages needed for librosa / audio
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    ffmpeg \
+    libsndfile1 \
+ && rm -rf /var/lib/apt/lists/*
+
+# Install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the code (including models/)
+COPY . .
+
+# Expose port (Render will map this)
+EXPOSE 8000
+
+# Start FastAPI (use PORT env var if Render sets it)
+CMD ["sh", "-c", "uvicorn api_server:app --host 0.0.0.0 --port ${PORT:-8000}"]
