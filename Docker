@@ -1,0 +1,5 @@
+cd %USERPROFILE%\Desktop\chick_voice   # or wherever the repo is
+
+git add Dockerfile requirements.txt
+git commit -m "Add Dockerfile for Render deployment"
+git push origin main
