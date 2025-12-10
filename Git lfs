@@ -1,0 +1,5 @@
+git lfs track "models/chicken_resnet_best.pt"
+git add .gitattributes
+git add models/chicken_resnet_best.pt
+git commit -m "Add model file with LFS"
+git push origin main
